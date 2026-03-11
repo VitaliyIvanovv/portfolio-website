@@ -1,0 +1,339 @@
+// Variables
+$primary-color: #00a8c7;
+$secondary-color: #006f82;
+$text-color: #333;
+$light-bg: #f4f4f4;
+$white: white;
+$gray: #666;
+$dark-bg: #333;
+
+// Spacing
+$spacing-small: 0.5rem;
+$spacing-medium: 1rem;
+$spacing-large: 2rem;
+$spacing-xlarge: 3rem;
+$spacing-xxlarge: 4rem;
+
+// Font sizes
+$font-size-small: 0.9rem;
+$font-size-base: 1.1rem;
+$font-size-medium: 1.3rem;
+$font-size-large: 1.5rem;
+$font-size-xlarge: 2rem;
+$font-size-xxlarge: 2.5rem;
+
+// Transitions
+$transition-fast: 0.3s;
+
+// Shadows
+$shadow-small: 0 2px 5px rgba(0, 0, 0, 0.1);
+$shadow-medium: 0 2px 10px rgba(0, 0, 0, 0.1);
+$shadow-large: 0 5px 15px rgba(0, 0, 0, 0.2);
+
+// Border radius
+$border-radius-small: 5px;
+$border-radius-medium: 8px;
+$border-radius-large: 15px;
+
+// Mixins
+@mixin flex-center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+@mixin transition($property: all) {
+    transition: $property $transition-fast;
+}
+
+@mixin card-hover {
+    @include transition(transform);
+    
+    &:hover {
+        transform: translateY(-5px);
+        box-shadow: $shadow-large;
+    }
+}
+
+// Reset
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: $light-bg;
+    color: $text-color;
+    line-height: 1.6;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 $spacing-large;
+}
+
+// Header
+header {
+    background-color: $primary-color;
+    color: $white;
+    padding: $spacing-large 0;
+    box-shadow: $shadow-small;
+
+    .container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    h1 {
+        font-size: $font-size-xlarge;
+    }
+}
+
+// Navigation
+nav {
+    ul {
+        display: flex;
+        gap: $spacing-large;
+        list-style: none;
+    }
+
+    a {
+        color: $white;
+        text-decoration: none;
+        font-size: $font-size-base;
+        @include transition(color);
+
+        &:hover {
+            color: $secondary-color;
+        }
+    }
+}
+
+// Hero Section
+.hero {
+    background: linear-gradient(135deg, $primary-color 0%, $secondary-color 100%);
+    color: $white;
+    padding: $spacing-xxlarge 0;
+    text-align: center;
+
+    h2 {
+        font-size: $font-size-xxlarge;
+        margin-bottom: $spacing-medium;
+    }
+
+    p {
+        font-size: $font-size-medium;
+        opacity: 0.9;
+    }
+}
+
+// Sections
+section {
+    padding: $spacing-xlarge 0;
+
+    &:nth-child(even) {
+        background-color: $white;
+    }
+}
+
+h2 {
+    font-size: $font-size-xlarge;
+    margin-bottom: $spacing-large;
+    color: $primary-color;
+    text-align: center;
+}
+
+// About Section
+.about-content {
+    max-width: 800px;
+    margin: 0 auto;
+    font-size: $font-size-base;
+}
+
+// Skills Section
+.skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: $spacing-large;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.skill-category {
+    background: $white;
+    padding: 1.5rem;
+    border-radius: $border-radius-medium;
+    box-shadow: $shadow-small;
+
+    h3 {
+        color: $primary-color;
+        margin-bottom: $spacing-medium;
+        font-size: $font-size-medium;
+    }
+
+    ul {
+        list-style: none;
+    }
+
+    li {
+        padding: $spacing-small 0;
+        border-bottom: 1px solid $light-bg;
+
+        &:last-child {
+            border-bottom: none;
+        }
+    }
+}
+
+// Projects Section
+.projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: $spacing-large;
+}
+
+.project-card {
+    background: $white;
+    border-radius: $border-radius-medium;
+    padding: $spacing-large;
+    box-shadow: $shadow-medium;
+    @include card-hover;
+
+    h3 {
+        color: $primary-color;
+        margin-bottom: $spacing-medium;
+        font-size: $font-size-large;
+    }
+
+    p {
+        color: $gray;
+        margin-bottom: $spacing-medium;
+    }
+}
+
+.tech-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: $spacing-small;
+    margin: $spacing-medium 0;
+}
+
+.tech-tag {
+    background-color: #e0f7fa;
+    color: $secondary-color;
+    padding: 0.3rem 0.8rem;
+    border-radius: $border-radius-large;
+    font-size: $font-size-small;
+}
+
+.project-links {
+    display: flex;
+    gap: $spacing-medium;
+    margin-top: $spacing-medium;
+}
+
+.btn {
+    display: inline-block;
+    padding: 0.6rem 1.2rem;
+    background-color: $primary-color;
+    color: $white;
+    text-decoration: none;
+    border-radius: $border-radius-small;
+    @include transition(background-color);
+
+    &:hover {
+        background-color: $secondary-color;
+    }
+}
+
+// Contact Section
+.contact-info {
+    text-align: center;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.contact-links {
+    display: flex;
+    justify-content: center;
+    gap: $spacing-large;
+    margin-top: $spacing-large;
+    flex-wrap: wrap;
+
+    a {
+        color: $primary-color;
+        text-decoration: none;
+        font-size: $font-size-base;
+        @include transition(color);
+
+        &:hover {
+            color: $secondary-color;
+        }
+    }
+}
+
+// Footer
+footer {
+    background-color: $dark-bg;
+    color: $white;
+    text-align: center;
+    padding: $spacing-large 0;
+    margin-top: $spacing-xlarge;
+}
+
+// Hamburger Menu
+.hamburger {
+    display: none;
+    flex-direction: column;
+    cursor: pointer;
+    gap: 5px;
+
+    span {
+        width: 25px;
+        height: 3px;
+        background-color: $white;
+        @include transition;
+    }
+}
+
+#menu-toggle {
+    display: none;
+}
+
+// Media Queries
+@media (max-width: 768px) {
+    header .container {
+        flex-direction: column;
+        gap: $spacing-medium;
+    }
+
+    .hamburger {
+        display: flex;
+        align-self: flex-end;
+    }
+
+    nav ul {
+        flex-direction: column;
+        gap: $spacing-medium;
+        max-height: 0;
+        overflow: hidden;
+        @include transition(max-height);
+    }
+
+    #menu-toggle:checked ~ ul {
+        max-height: 500px;
+    }
+
+    .hero h2 {
+        font-size: $font-size-xlarge;
+    }
+
+    .projects-grid,
+    .skills-grid {
+        grid-template-columns: 1fr;
+    }
+}
